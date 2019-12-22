@@ -1,2 +1,2 @@
 # ConnectFour
-Connect Four written in SFML
+Connect Four written with SFML
