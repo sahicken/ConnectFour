@@ -3,6 +3,8 @@
 
 // TODO(sahicken): add testing
 // TODO(sahicken): support diagonals
+// TODO(sahicken): update variable names
+// TODO(sahicken): make call to Rows()
 int Grid::Winner() {
     auto potential = 0;  // potential winner
     auto countdown = connect_;  // remaining connections
@@ -37,4 +39,22 @@ int Grid::Winner() {
     }
 
     return 0;
+}
+
+// TODO(sahicken): allocations
+// supports diagonals
+std::vector<std::vector<std::vector<int>>> Grid::Rows() {
+    std::vector<std::vector<std::vector<int>>> rows;
+
+    for (auto i = 0u; i < grid_.size(); ++i) {
+        for (auto j = 0u; j < grid_[i].size(); ++j) {
+            rows[0][i][j] = grid_[i][j];
+            // TODO(sahicken): use TDD
+            rows[1][j][i] = grid_[i][j];
+            rows[2][i+j].push_back(grid_[i][j]);
+            rows[3][i-j+grid_[i].size()].push_back(grid_[i][j]);
+        }
+    }
+
+    return rows;
 }
