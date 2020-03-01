@@ -48,9 +48,9 @@ std::vector<std::vector<std::vector<int>>> Grid::Rows() {
 
     for (auto i = 0u; i < grid_.size(); ++i) {
         for (auto j = 0u; j < grid_[i].size(); ++j) {
-            rows[0][i][j] = grid_[i][j];
+            rows[0][i].push_back(grid_[i][j]);
             // TODO(sahicken): use TDD
-            rows[1][j][i] = grid_[i][j];
+            rows[1][j].push_back(grid_[i][j]);
             rows[2][i+j].push_back(grid_[i][j]);
             rows[3][i-j+grid_[i].size()].push_back(grid_[i][j]);
         }
